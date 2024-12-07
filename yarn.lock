@@ -1914,17 +1914,17 @@
   resolved "https://registry.yarnpkg.com/@msgpackr-extract/msgpackr-extract-win32-x64/-/msgpackr-extract-win32-x64-3.0.3.tgz#0aa5502d547b57abfc4ac492de68e2006e417242"
   integrity sha512-x0fWaQtYp4E6sktbsdAqnehxDgEc/VwM7uLsRCYWaiGu0ykYdZPiS8zCWdnjHwyiumousxfBm4SO31eXqwEZhQ==
 
-"@nebular/eva-icons@13.0.0":
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/@nebular/eva-icons/-/eva-icons-13.0.0.tgz#22292d507e223af9e236d52fd4270b781b29e31e"
-  integrity sha512-4M9vwo3OJeDjlVufeGTg1u/01uxZ0LH8f8GvD1wuyzGitY/3hlySmXP31Nz/koKcM9QJZsm0wECJVxd+8BDf3Q==
+"@nebular/eva-icons@14.0.2":
+  version "14.0.2"
+  resolved "https://registry.yarnpkg.com/@nebular/eva-icons/-/eva-icons-14.0.2.tgz#ada822792415a5083298fe561ce41e2e554a8f00"
+  integrity sha512-fGA3yMqPe1LjRMcJ6J5RwL+PCn90+q6sHyBziPkvU505Vjs3CQvTQWuj0GtBnOyUonLbrHzp90ha6IqG6HFdCQ==
   dependencies:
     tslib "^2.3.0"
 
-"@nebular/theme@13.0.0":
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/@nebular/theme/-/theme-13.0.0.tgz#5c40de36e8cfd362ec473d3689574c4eb846dc24"
-  integrity sha512-Tru51zohkCe2Xw4mDhVmmRsiHeAwkbzNDKSEP4/IVCHcCUpwT/d7S6w3Wc6NlzrVD8DsDSbN6BWef9VIbvs5Pw==
+"@nebular/theme@14.0.2":
+  version "14.0.2"
+  resolved "https://registry.yarnpkg.com/@nebular/theme/-/theme-14.0.2.tgz#dacf0f69d78aa9cf2bcca95a7dbde005136dcc20"
+  integrity sha512-w+W8g5T4uds8qdNV8JxgEsw/2VboQzi4DmInppeNA2IJfWyWqCG67bMGBOFVQJiIqUCQVRkMXkMqNfyv/LqgcA==
   dependencies:
     tslib "^2.3.0"
 
