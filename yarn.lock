@@ -1637,17 +1637,17 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.5.tgz#4fc56c15c580b9adb7dc3c333a134e540b44bfb1"
   integrity sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==
 
-"@nebular/eva-icons@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/@nebular/eva-icons/-/eva-icons-11.0.1.tgz#bfd12fad33c94e5938732738d1efb038f94f8836"
-  integrity sha512-dLPhQy0ciVv9jmskFIdaHJlFoEzOHNQv64/mUf70I551TMp9Xl3wubz2iL/DfS5SgTl+F3ZkzUUdGZu0yAAx2g==
+"@nebular/eva-icons@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@nebular/eva-icons/-/eva-icons-12.0.0.tgz#acf0b3102f4c5aa300f3b9793d800daedf706c1c"
+  integrity sha512-YB2xGhRyhgvppvZ+I9hGS5q8LS3u0gOKml3KYeDMA/Rf8h3erFVn5ZEK/KBqoVh9khIY6OHj305RqiLXA25j7Q==
   dependencies:
     tslib "^2.3.0"
 
-"@nebular/theme@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/@nebular/theme/-/theme-11.0.1.tgz#a9263d2f626b95eb3f51ae442e51697d823decb7"
-  integrity sha512-ncKqg25LdPAsbP2SEAso5xrQgJsjoGXnOLBIGU4uyT0p8k8oAO2VZ5+8lH60j/HfOk1JbZnuUpA5gMbgo/hjNA==
+"@nebular/theme@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@nebular/theme/-/theme-12.0.0.tgz#38e621a44e578a41a1ed4e0d150b8b05802947d1"
+  integrity sha512-CHmOUODjKxBNHc0LD2Rct5nGkseErMHQuLY5lwXFTbQ7oD/TZTWbFGurFYJShppFF+9Q6qJGodJ+nI6mTUQYBQ==
   dependencies:
     tslib "^2.3.0"
 
