@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
-import { AsyncInput } from '@ng-reactive/async-input';
 import { Item, ItemState, Reservation, TotalReportState } from '../../_models';
 import { ApiService } from '../../_services';
 import { toIsoDate } from '../../_helpers';
@@ -21,13 +20,36 @@ interface ItemStateWithArray extends ItemState {
     styleUrls: ['./item-details.component.scss'],
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy, OnChanges {
-    @Input() item: Item;
-    @Input() reservationStart: string;
-    @Input() reservationEnd: string;
+    private readonly item$ = new BehaviorSubject<Item>(null);
+    private readonly reservationStart$ = new BehaviorSubject<string>(toIsoDate(new Date()));
+    private readonly reservationEnd$ = new BehaviorSubject<string>(toIsoDate(new Date(Date.now() + 60 * 60 * 24 * 1000)));
 
-    @AsyncInput() item$ = new BehaviorSubject<Item>(null);
-    @AsyncInput() reservationStart$ = new BehaviorSubject<string>(toIsoDate(new Date()));
-    @AsyncInput() reservationEnd$ = new BehaviorSubject<string>(toIsoDate(new Date(Date.now() + 60 * 60 * 24 * 1000)));
+    @Input()
+    public set item(item: Item) {
+        this.item$.next(item);
+    }
+
+    public get item(): Item {
+        return this.item$.value;
+    }
+
+    @Input()
+    public set reservationStart(reservationStart: string) {
+        this.reservationStart$.next(reservationStart);
+    }
+
+    public get reservationStart(): string {
+        return this.reservationStart$.value;
+    }
+
+    @Input()
+    public set reservationEnd(reservationEnd: string) {
+        this.reservationEnd$.next(reservationEnd);
+    }
+
+    public get reservationEnd(): string {
+        return this.reservationEnd$.value;
+    }
 
     itemHistoryWithState$: Observable<ItemStateWithArray[]>;
     //reservations$: Observable<Reservation[]>;
@@ -83,6 +105,9 @@ export class ItemDetailsComponent implements OnInit, OnDestroy, OnChanges {
     ngOnInit() {}
 
     ngOnDestroy(): void {
+        this.item$.complete();
+        this.reservationStart$.complete();
+        this.reservationEnd$.complete();
         this.destroyed$.next();
     }
 

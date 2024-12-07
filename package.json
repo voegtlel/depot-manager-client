@@ -26,7 +26,6 @@
         "@angular/router": "~13.2.2",
         "@nebular/eva-icons": "^9.0.0",
         "@nebular/theme": "^9.0.0",
-        "@ng-reactive/async-input": "0.0.1",
         "@types/xregexp": "^4.3.0",
         "angular-oauth2-oidc": "^13.0.0",
         "eva-icons": "^1.1.3",

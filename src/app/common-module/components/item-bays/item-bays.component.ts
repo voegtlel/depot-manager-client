@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges, OnDestroy } from '@angular/core';
 import { ItemsService } from '../../_services';
 import { Reservation, Item, Bay } from '../../_models';
 import { combineLatest, Observable, BehaviorSubject } from 'rxjs';
-import { AsyncInput } from '@ng-reactive/async-input';
 import { map, filter } from 'rxjs/operators';
 
 interface BayWithItems extends Bay {
@@ -14,10 +13,17 @@ interface BayWithItems extends Bay {
     templateUrl: './item-bays.component.html',
     styleUrls: ['./item-bays.component.scss'],
 })
-export class ItemBaysComponent implements OnInit, OnChanges {
-    @Input() reservation: Reservation;
+export class ItemBaysComponent implements OnInit, OnChanges, OnDestroy {
+    private readonly reservation$ = new BehaviorSubject<Reservation>(null);
 
-    @AsyncInput() reservation$ = new BehaviorSubject<Reservation>(null);
+    @Input()
+    public set reservation(reservation: Reservation) {
+        this.reservation$.next(reservation);
+    }
+
+    public get reservation(): Reservation {
+        return this.reservation$.value;
+    }
 
     bays$: Observable<BayWithItems[]>;
 
@@ -66,4 +72,8 @@ export class ItemBaysComponent implements OnInit, OnChanges {
     ngOnInit() {}
 
     ngOnChanges() {}
+
+    ngOnDestroy() {
+        this.reservation$.complete();
+    }
 }
