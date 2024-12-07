@@ -6,9 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { NbSidebarModule, NbSidebarService, NbThemeModule, NbToastrService } from '@nebular/theme';
 import { OAuthService } from 'angular-oauth2-oidc';
-
 import { environment } from 'src/environments/environment';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './client-module/app.routing.module';
 import { ClientModuleModule } from './client-module/client-module.module';
@@ -16,8 +14,6 @@ import { ApiService, AuthService, EnvService } from './common-module/_services';
 import { ApiMockService } from './common-module/_services/api-mock.service';
 import { AuthMockService } from './common-module/_services/auth-mock.service';
 import { ReservationResolver } from './device-module/_services/reservation.resolver';
-import { DeviceAppRoutingModule } from './device-module/app.routing.device.module';
-import { DeviceModuleModule } from './device-module/device-module.module';
 
 @NgModule({
     // entryComponents: [CalendarRangeDayCellComponent, CalendarRangeComponent],
@@ -26,8 +22,8 @@ import { DeviceModuleModule } from './device-module/device-module.module';
     imports: [BrowserModule,
         BrowserAnimationsModule,
         NbThemeModule.forRoot(),
-        environment.onDevice ? DeviceModuleModule : ClientModuleModule,
-        environment.onDevice ? DeviceAppRoutingModule : AppRoutingModule,
+        ClientModuleModule,
+        AppRoutingModule,
         NbSidebarModule],
     providers: [
         NbSidebarService,

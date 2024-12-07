@@ -5,11 +5,8 @@
         "ng": "ng",
         "start": "ng serve --port 4201",
         "start-offline": "ng serve --port 4202 --configuration=offline",
-        "start-device": "ng serve --port 4202 --configuration=device",
         "build": "ng build",
         "build-prod": "ng build --configuration=prod",
-        "build-device": "ng build --configuration=device",
-        "build-device-prod": "ng build --configuration=device-prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
