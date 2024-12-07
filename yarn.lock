@@ -1254,17 +1254,17 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@nebular/eva-icons@^9.0.0":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@nebular/eva-icons/-/eva-icons-9.0.1.tgz#3023eedb6b79eae2d1c31e9119744d990585892c"
-  integrity sha512-EXGfCZ4t0Z24xjKmLNT1BjxFcUeI3JUNerVaDFZ5vzt4+Ligelt7jLHjOpE3KXoX+FEuqINjihuy3mi+lk2Nhg==
+"@nebular/eva-icons@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@nebular/eva-icons/-/eva-icons-10.0.0.tgz#ce1f832f8548d1701e2de197e420b8d6e0580944"
+  integrity sha512-z/8j+5f81IzyxP1Hl2xS1+k9QEYpJpKcbK5SWfR66z9OMTIR+/V5OGGvpR7XLLIBEwzFPab72KwYE8Pf/2JDLQ==
   dependencies:
     tslib "^2.3.0"
 
-"@nebular/theme@^9.0.0":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@nebular/theme/-/theme-9.0.1.tgz#b13a717ed00e138cee9eeafd38e0cbeabffa2855"
-  integrity sha512-Mcj0nbfYeK68QAz+UixH90YLS6KdMY4plooiIGxHbDSf+dAAG3orpN20/nzzJYnCaVghmhcHAXoxqFEngxBRaw==
+"@nebular/theme@10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@nebular/theme/-/theme-10.0.0.tgz#ec88a789c09a198cc906554943b0dbc4b108bcb1"
+  integrity sha512-XpATY3IOPiIAcikQMQ7PSaZ2GvuPWyR/vhSc+fYJYY91IoggtgGrwDdf27pw+rNS4WV/cqeGR0voV4//EHMlHg==
   dependencies:
     tslib "^2.3.0"
 
