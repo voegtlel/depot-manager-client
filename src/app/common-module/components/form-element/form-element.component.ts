@@ -8,7 +8,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { DateHelper } from '../../_helpers';
 import { NbDialogService } from '@nebular/theme';
 import { ApiService, ItemsService } from '../../_services';
@@ -28,8 +28,8 @@ export interface Choice<T> {
     styleUrls: ['./form-element.component.scss'],
 })
 export class FormElementComponent {
-    @Input() formControlRef: FormControl;
-    @Input() formControlRefEnd: FormControl;
+    @Input() formControlRef: UntypedFormControl;
+    @Input() formControlRefEnd: UntypedFormControl;
 
     @Input() type:
         | 'text'

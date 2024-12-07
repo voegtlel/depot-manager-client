@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService, AuthService, ItemsService } from '../../../common-module/_services';
 import { BehaviorSubject, Observable, of, Subject, combineLatest } from 'rxjs';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Bay } from '../../../common-module/_models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
@@ -25,10 +25,10 @@ export class BayComponent implements OnInit, OnDestroy {
 
     bayId: string = null;
 
-    readonly form: FormGroup = new FormGroup({
-        externalId: new FormControl(''),
-        name: new FormControl('', Validators.required),
-        description: new FormControl('', Validators.required),
+    readonly form: UntypedFormGroup = new UntypedFormGroup({
+        externalId: new UntypedFormControl(''),
+        name: new UntypedFormControl('', Validators.required),
+        description: new UntypedFormControl('', Validators.required),
     });
 
     constructor(

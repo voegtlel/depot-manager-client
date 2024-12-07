@@ -7,7 +7,7 @@ import {
     ReportService,
 } from '../../../common-module/_services';
 import { BehaviorSubject, Observable, of, Subject, combineLatest } from 'rxjs';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import {
     Item,
     ItemCondition,
@@ -21,12 +21,12 @@ import { distinctUntilChanged, filter, map, shareReplay, startWith, switchMap, t
 import { Choice } from '../../../common-module/components/form-element/form-element.component';
 import { parseHttpError } from 'src/app/common-module/_helpers';
 
-class ReportElementFormGroup extends FormGroup {
+class ReportElementFormGroup extends UntypedFormGroup {
     constructor(public readonly reportElement: ReportElement) {
         super({
-            reportElementId: new FormControl(reportElement.id),
-            state: new FormControl(null, Validators.required),
-            comment: new FormControl(null),
+            reportElementId: new UntypedFormControl(reportElement.id),
+            state: new UntypedFormControl(null, Validators.required),
+            comment: new UntypedFormControl(null),
         });
     }
 }
@@ -71,30 +71,30 @@ export class ItemComponent implements OnInit, OnDestroy {
 
     createReport = false;
 
-    groupItem = new FormControl(false);
+    groupItem = new UntypedFormControl(false);
 
     reportProfile$: Observable<ReportProfileWithElements>;
 
-    readonly reportForm: FormArray = new FormArray([]);
-    readonly form: FormGroup = new FormGroup({
-        externalId: new FormControl(''),
-        manufacturer: new FormControl(''),
-        model: new FormControl(''),
-        serialNumber: new FormControl(''),
-        manufactureDate: new FormControl(null),
-        purchaseDate: new FormControl(null),
-        firstUseDate: new FormControl(null),
-        name: new FormControl('', Validators.required),
-        description: new FormControl('', Validators.required),
-        reportProfileId: new FormControl(null),
-        condition: new FormControl(null, Validators.required),
-        conditionComment: new FormControl(''),
-        pictureId: new FormControl(null),
-        groupId: new FormControl(null),
-        bayId: new FormControl(null),
-        tags: new FormControl([]),
-        changeComment: new FormControl(''),
-    } as Record<keyof ReportItemInWrite, FormControl | FormArray>);
+    readonly reportForm: UntypedFormArray = new UntypedFormArray([]);
+    readonly form: UntypedFormGroup = new UntypedFormGroup({
+        externalId: new UntypedFormControl(''),
+        manufacturer: new UntypedFormControl(''),
+        model: new UntypedFormControl(''),
+        serialNumber: new UntypedFormControl(''),
+        manufactureDate: new UntypedFormControl(null),
+        purchaseDate: new UntypedFormControl(null),
+        firstUseDate: new UntypedFormControl(null),
+        name: new UntypedFormControl('', Validators.required),
+        description: new UntypedFormControl('', Validators.required),
+        reportProfileId: new UntypedFormControl(null),
+        condition: new UntypedFormControl(null, Validators.required),
+        conditionComment: new UntypedFormControl(''),
+        pictureId: new UntypedFormControl(null),
+        groupId: new UntypedFormControl(null),
+        bayId: new UntypedFormControl(null),
+        tags: new UntypedFormControl([]),
+        changeComment: new UntypedFormControl(''),
+    } as Record<keyof ReportItemInWrite, UntypedFormControl | UntypedFormArray>);
 
     constructor(
         public api: ApiService,
@@ -206,8 +206,8 @@ export class ItemComponent implements OnInit, OnDestroy {
         if (profileId == null) {
             return;
         }
-        this.form.addControl('lastService', new FormControl(new Date().toISOString().substring(0, 10)));
-        this.form.addControl('totalReportState', new FormControl(null, Validators.required));
+        this.form.addControl('lastService', new UntypedFormControl(new Date().toISOString().substring(0, 10)));
+        this.form.addControl('totalReportState', new UntypedFormControl(null, Validators.required));
         this.form.addControl('report', this.reportForm);
         this.form.updateValueAndValidity();
         this.form.controls.changeComment.setValue('Inspection');
