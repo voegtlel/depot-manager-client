@@ -9,4 +9,5 @@ export const environment = {
     userApiUrl: 'http://localhost:8000',
     userCardConfig: '',
     appBaseHref: '/',
+    offline: false,
 };
