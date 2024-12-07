@@ -5892,10 +5892,10 @@ ngx-chips@^3.0.0:
     ng2-material-dropdown ">=1.0.0"
     tslib "^2.3.0"
 
-ngx-file-drop@14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-file-drop/-/ngx-file-drop-14.0.0.tgz#8d89b18bcd9a363d504fde2066491de0f145d36b"
-  integrity sha512-uTAEuOGAwu8DGV8We1Uk91Z13ozw+2kGpAIhLWP0r8xXE+CDKKqsed8zCKSM4ly2GPmgFUzehQOwefr5a+kDyg==
+ngx-file-drop@16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-file-drop/-/ngx-file-drop-16.0.0.tgz#3f6cb74b5bfee0d7bcd76635c7120d36fa64ff62"
+  integrity sha512-33RPoZBAiMkV110Rzu3iOrzGcG5M20S4sAiwLzNylfJobu9qVw5XR83FhUelSeqJRoaDxXBRKAozYCSnUf2CNw==
   dependencies:
     tslib "^2.3.0"
 
