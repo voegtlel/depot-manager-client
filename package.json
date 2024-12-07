@@ -4,6 +4,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve --port 4201",
+        "start-offline": "ng serve --port 4202 --configuration=offline",
         "start-device": "ng serve --port 4202 --configuration=device",
         "build": "ng build",
         "build-prod": "ng build --configuration=prod",

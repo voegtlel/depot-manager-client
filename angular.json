@@ -1,5 +1,8 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "cli": {
+      "analytics": false
+    },
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
@@ -38,6 +41,14 @@
                                 {
                                     "replace": "src/environments/environment.ts",
                                     "with": "src/environments/environment.device.ts"
+                                }
+                            ]
+                        },
+                        "offline": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.offline.ts"
                                 }
                             ]
                         },
@@ -112,6 +123,9 @@
                         },
                         "device": {
                             "browserTarget": "depot:build:device"
+                        },
+                        "offline": {
+                            "browserTarget": "depot:build:offline"
                         }
                     }
                 },

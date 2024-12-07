@@ -6,4 +6,5 @@ export const environment = {
     production: false,
     onDevice: true,
     appBaseHref: '/',
+    offline: false,
 };
