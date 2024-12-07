@@ -65,10 +65,10 @@ export class ReportProfileComponent implements OnInit, OnDestroy {
                 if (reportProfile !== null) {
                     this.reportProfileId = reportProfile.id;
                     this.isNew = false;
-                    while (this.elementsForm.controls.length > reportProfile.elements?.length ?? 0) {
+                    while (this.elementsForm.controls.length > (reportProfile.elements?.length ?? 0)) {
                         this.elementsForm.removeAt(0);
                     }
-                    while (this.elementsForm.controls.length < reportProfile.elements?.length ?? 0) {
+                    while (this.elementsForm.controls.length < (reportProfile.elements?.length ?? 0)) {
                         this.elementsForm.push(new UntypedFormControl('', Validators.required));
                     }
                     this.form.reset(reportProfile);
