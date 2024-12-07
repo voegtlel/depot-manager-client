@@ -37,6 +37,12 @@
     "xregexp": "^5.1.0",
     "zone.js": "~0.11.4"
   },
+    "//devDependencies": {
+        "@nebular/theme": "(!) Basically not maintained anymore; Widget library; Last supported Angular version: 18",
+        "ngx-chips": "(!) not maintained anymore; Chips for Angular; Last supported Angular version: 13; better use Material! https://github.com/Gbuomprisco/ngx-chips/blob/master/package.json",
+        "ngx-file-drop": "File and folder drag and drop for Angular; Last supported Angular version: 16",
+        "ngx-markdown": "Parses markdown to HTML (many other features); Looks well maintained"
+    },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.13",
     "@angular/cli": "^14.2.13",
