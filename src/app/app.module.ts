@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { APP_BASE_HREF } from '@angular/common';
@@ -18,17 +18,17 @@ import { ReservationResolver } from './device-module/_services/reservation.resol
 @NgModule({
     // entryComponents: [CalendarRangeDayCellComponent, CalendarRangeComponent],
     declarations: [AppComponent],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent],
+    imports: [BrowserModule,
         BrowserAnimationsModule,
         NbThemeModule.forRoot(),
         environment.onDevice ? DeviceModuleModule : ClientModuleModule,
-        HttpClientModule,
         environment.onDevice ? DeviceAppRoutingModule : AppRoutingModule,
-        NbSidebarModule,
-    ],
-    providers: [NbSidebarService, { provide: APP_BASE_HREF, useValue: '/' }, ReservationResolver],
-
-    bootstrap: [AppComponent],
+        NbSidebarModule],
+    providers: [NbSidebarService, {
+        provide: APP_BASE_HREF,
+        useValue: '/'
+    }, ReservationResolver, provideHttpClient(withInterceptorsFromDi())]
 })
-export class AppModule {}
+export class AppModule {
+}

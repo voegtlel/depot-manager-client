@@ -15,21 +15,19 @@
             },
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-devkit/build-angular:application",
                     "options": {
                         "outputPath": "dist/depot",
                         "index": "src/index.html",
-                        "main": "src/main.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": ["src/polyfills.ts"],
                         "tsConfig": "src/tsconfig.app.json",
                         "assets": ["src/favicon.ico", "src/assets", "src/env.js"],
                         "styles": ["src/styles.scss"],
-                        "vendorChunk": true,
                         "extractLicenses": false,
-                        "buildOptimizer": false,
                         "sourceMap": true,
                         "optimization": false,
-                        "namedChunks": true
+                        "namedChunks": true,
+                        "browser": "src/main.ts"
                     },
                     "configurations": {
                         "device": {
@@ -52,8 +50,6 @@
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
                             "budgets": [
                                 {
                                     "type": "initial",
@@ -79,8 +75,6 @@
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
                             "budgets": [
                                 {
                                     "type": "initial",
@@ -100,31 +94,31 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "depot:build"
+                        "buildTarget": "depot:build"
                     },
                     "configurations": {
                         "prod": {
-                            "browserTarget": "depot:build:prod"
+                            "buildTarget": "depot:build:prod"
                         },
                         "device-production": {
-                            "browserTarget": "depot:build:device-prod"
+                            "buildTarget": "depot:build:device-prod"
                         },
                         "device": {
-                            "browserTarget": "depot:build:device"
+                            "buildTarget": "depot:build:device"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "depot:build"
+                        "buildTarget": "depot:build"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "src/test.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": ["src/polyfills.ts"],
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
                         "styles": ["src/styles.css"],

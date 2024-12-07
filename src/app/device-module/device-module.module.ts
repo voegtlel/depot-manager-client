@@ -1,6 +1,6 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { APP_BASE_HREF, CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -64,8 +64,8 @@ import { ReservationComponent } from './pages/reservation/reservation.component'
         BayComponent,
         LogoutComponent,
     ],
-    imports: [
-        CommonModule,
+    exports: [PagesComponent],
+    imports: [CommonModule,
         CommonModuleModule,
         RouterModule,
         NbMenuModule.forRoot(),
@@ -107,10 +107,11 @@ import { ReservationComponent } from './pages/reservation/reservation.component'
         ReactiveFormsModule,
         DragDropModule,
         FormsModule,
-        HttpClientModule,
-        MarkdownModule.forRoot(),
-    ],
-    exports: [PagesComponent],
-    providers: [{ provide: APP_BASE_HREF, useValue: environment.appBaseHref }, AuthGuard],
+        MarkdownModule.forRoot()],
+    providers: [{
+        provide: APP_BASE_HREF,
+        useValue: environment.appBaseHref
+    }, AuthGuard, provideHttpClient(withInterceptorsFromDi())]
 })
-export class DeviceModuleModule {}
+export class DeviceModuleModule {
+}
