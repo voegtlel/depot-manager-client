@@ -12,6 +12,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
     selector: 'depot-report-element',
     templateUrl: './report-element.component.html',
     styleUrls: ['./report-element.component.scss'],
+    standalone: false
 })
 export class ReportElementComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();

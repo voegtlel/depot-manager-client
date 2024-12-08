@@ -11,6 +11,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
 @Component({
     selector: 'depot-reservation-return',
     templateUrl: './reservation-return.component.html',
+    standalone: false
 })
 export class ReservationReturnComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();

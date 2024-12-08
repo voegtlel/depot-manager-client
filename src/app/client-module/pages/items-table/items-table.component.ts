@@ -17,6 +17,7 @@ interface ItemWithConditionText extends Item, Filterable {
     templateUrl: './items-table.component.html',
     styleUrls: ['./items-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ItemsTableComponent implements OnInit, OnDestroy {
     loading = true;

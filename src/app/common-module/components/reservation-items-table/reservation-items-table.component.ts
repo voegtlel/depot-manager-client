@@ -48,6 +48,7 @@ function dateDaysDiff(d1: Date, d2: Date): number {
     selector: 'depot-reservation-items-table',
     templateUrl: './reservation-items-table.component.html',
     styleUrls: ['./reservation-items-table.component.scss'],
+    standalone: false
 })
 export class ReservationItemsTableComponent implements OnChanges, OnDestroy, OnInit {
     @Input() selectedLookup: Record<string, any>;

@@ -8,6 +8,7 @@ import { ReportService } from '../../_services';
     selector: 'depot-report-element-list',
     templateUrl: './report-element-list.component.html',
     styleUrls: ['./report-element-list.component.scss'],
+    standalone: false
 })
 export class ReportElementListComponent implements OnInit, OnDestroy {
     @Input() selectedReportElement: string;

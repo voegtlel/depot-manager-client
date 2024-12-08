@@ -18,6 +18,7 @@ interface ItemStateWithArray extends ItemState {
     selector: 'depot-item-details',
     templateUrl: './item-details.component.html',
     styleUrls: ['./item-details.component.scss'],
+    standalone: false
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy, OnChanges {
     private readonly item$ = new BehaviorSubject<Item>(null);

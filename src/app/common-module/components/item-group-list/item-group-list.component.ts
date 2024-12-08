@@ -17,6 +17,7 @@ function uuid(a?, b?) {
     selector: 'depot-item-group-list',
     templateUrl: './item-group-list.component.html',
     styleUrls: ['./item-group-list.component.scss'],
+    standalone: false
 })
 export class ItemGroupListComponent implements OnInit, OnDestroy {
     @Input() selectedItemGroup: string;

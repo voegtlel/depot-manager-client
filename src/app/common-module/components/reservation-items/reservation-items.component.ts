@@ -17,6 +17,7 @@ interface ItemWithAvailability extends Item, Filterable {
     templateUrl: './reservation-items.component.html',
     providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ReservationItemsComponent), multi: true }],
     styleUrls: ['./reservation-items.component.scss'],
+    standalone: false
 })
 export class ReservationItemsComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
     private readonly reservationsEnd$ = new BehaviorSubject<string>(null);

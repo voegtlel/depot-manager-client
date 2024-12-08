@@ -9,6 +9,7 @@ import { Subject, Observable, combineLatest } from 'rxjs';
     selector: 'depot-pages-root',
     templateUrl: './pages.component.html',
     styleUrls: ['./pages.component.scss'],
+    standalone: false
 })
 export class PagesComponent implements OnDestroy {
     menuItems: NbMenuItem[] = [];

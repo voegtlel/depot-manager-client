@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 @Pipe({
     name: 'reportProfile',
+    standalone: false
 })
 export class ReportProfilePipe implements PipeTransform {
     constructor(private reportService: ReportService) {}

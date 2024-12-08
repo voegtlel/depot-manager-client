@@ -8,6 +8,7 @@ import { NbDialogService } from '@nebular/theme';
     selector: 'depot-reservation-list-item',
     templateUrl: './reservation-list-item.component.html',
     styleUrls: ['./reservation-list-item.component.scss'],
+    standalone: false
 })
 export class ReservationListItemComponent implements OnInit, OnDestroy, OnChanges {
     @Input() item: Item;

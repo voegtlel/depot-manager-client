@@ -9,6 +9,7 @@ import { NbDialogService } from '@nebular/theme';
     selector: 'depot-reservation-details',
     templateUrl: './reservation-details.component.html',
     styleUrls: ['./reservation-details.component.scss'],
+    standalone: false
 })
 export class ReservationDetailsComponent implements OnInit, OnDestroy, OnChanges {
     private readonly reservation$ = new BehaviorSubject<Reservation>(null);

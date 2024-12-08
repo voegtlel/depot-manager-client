@@ -13,6 +13,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
     selector: 'depot-report-profile',
     templateUrl: './report-profile.component.html',
     styleUrls: ['./report-profile.component.scss'],
+    standalone: false
 })
 export class ReportProfileComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();

@@ -9,6 +9,7 @@ import { ApiService } from '../../_services';
     selector: 'depot-picture-list',
     templateUrl: './picture-list.component.html',
     styleUrls: ['./picture-list.component.scss'],
+    standalone: false
 })
 export class PictureListComponent implements OnInit {
     pictures$: Observable<Picture[]>;

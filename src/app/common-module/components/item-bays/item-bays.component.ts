@@ -12,6 +12,7 @@ interface BayWithItems extends Bay {
     selector: 'depot-item-bays',
     templateUrl: './item-bays.component.html',
     styleUrls: ['./item-bays.component.scss'],
+    standalone: false
 })
 export class ItemBaysComponent implements OnInit, OnChanges, OnDestroy {
     private readonly reservation$ = new BehaviorSubject<Reservation>(null);

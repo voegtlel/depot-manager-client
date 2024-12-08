@@ -12,6 +12,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
     selector: 'depot-bay',
     templateUrl: './bay.component.html',
     styleUrls: ['./bay.component.scss'],
+    standalone: false
 })
 export class BayComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();

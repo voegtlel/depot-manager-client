@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 @Pipe({
     name: 'userName',
+    standalone: false
 })
 export class UserNamePipe implements PipeTransform {
     constructor(private usersService: UsersService) {}

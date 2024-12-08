@@ -5,7 +5,10 @@ export interface Filterable extends Item {
     filterLookup: string;
 }
 
-@Pipe({ name: 'itemFilter' })
+@Pipe({
+    name: 'itemFilter',
+    standalone: false
+})
 export class ItemFilterPipe implements PipeTransform {
     transform<ItemType extends Filterable>(
         items: ItemType[],

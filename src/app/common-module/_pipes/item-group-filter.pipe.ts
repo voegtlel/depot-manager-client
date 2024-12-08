@@ -2,7 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ReservationItem } from '../_models';
 import { Filterable } from './item-filter.pipe';
 
-@Pipe({ name: 'itemGroupFilter' })
+@Pipe({
+    name: 'itemGroupFilter',
+    standalone: false
+})
 export class ItemGroupFilterPipe implements PipeTransform {
     transform<ItemType extends Filterable>(
         items: ItemType[][],

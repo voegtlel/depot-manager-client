@@ -32,6 +32,7 @@ interface ItemEntry {
     templateUrl: './items.component.html',
     styleUrls: ['./items.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ItemsComponent implements OnInit, OnDestroy {
     loading = true;

@@ -19,6 +19,7 @@ interface ReportElementEntry {
     templateUrl: './report-elements.component.html',
     styleUrls: ['./report-elements.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ReportElementsComponent implements OnInit, OnDestroy {
     loading: boolean;

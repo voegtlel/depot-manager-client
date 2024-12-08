@@ -35,6 +35,7 @@ class ReportElementFormGroup extends UntypedFormGroup {
     selector: 'depot-item',
     templateUrl: './item.component.html',
     styleUrls: ['./item.component.scss'],
+    standalone: false
 })
 export class ItemComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();

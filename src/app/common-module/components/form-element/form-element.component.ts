@@ -26,6 +26,7 @@ export interface Choice<T> {
     selector: 'depot-form-element',
     templateUrl: './form-element.component.html',
     styleUrls: ['./form-element.component.scss'],
+    standalone: false
 })
 export class FormElementComponent {
     @Input() formControlRef: UntypedFormControl;
