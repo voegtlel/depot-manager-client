@@ -1,5 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,8 +10,7 @@ import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './client-module/app.routing.module';
 import { ClientModuleModule } from './client-module/client-module.module';
-import { ApiService, AuthService, EnvService } from './common-module/_services';
-import { ApiMockService } from './common-module/_services/api-mock.service';
+import { AuthService, EnvService } from './common-module/_services';
 import { AuthMockService } from './common-module/_services/auth-mock.service';
 import { ReservationResolver } from './device-module/_services/reservation.resolver';
 
@@ -43,17 +42,6 @@ import { ReservationResolver } from './device-module/_services/reservation.resol
                 }
             },
             deps: [OAuthService, EnvService, Router, NbToastrService]
-        },
-        {
-            provide: ApiService,
-            useFactory: (httpClient: HttpClient, envService: EnvService, authService: AuthService) => {
-                if (environment.offline) {
-                    return new ApiMockService(authService);
-                } else {
-                    return new ApiService(httpClient, envService, authService);
-                }
-            },
-            deps: [HttpClient, EnvService, OAuthService]
         },
     ]
 })
