@@ -6731,10 +6731,10 @@ ngx-file-drop@16.0.0:
   dependencies:
     tslib "^2.3.0"
 
-ngx-markdown@18.1.0:
-  version "18.1.0"
-  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-18.1.0.tgz#940dde1bf1a5bd9450343aed2387006329b5e27d"
-  integrity sha512-n4HFSm5oqVMXFuD+WXIVkI6NyxD8Oubr4B3c9U1J7Ptr6t9DVnkNBax3yxWc+8Wli+FXTuGEnDXzB3sp7E9paA==
+ngx-markdown@19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-19.0.0.tgz#e1bad3111a4545a3e65721381aecb2c05fb71197"
+  integrity sha512-/UDTYxK2sbG9LjeuPfqErCg9gbT1O64Rnqvs9qgvK70X//gEVCMStNUi1zYIqw/SLRk19Rk48DZMgPiFRbgb1Q==
   dependencies:
     tslib "^2.3.0"
   optionalDependencies:
