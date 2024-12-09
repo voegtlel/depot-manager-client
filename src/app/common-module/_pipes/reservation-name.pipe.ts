@@ -3,6 +3,7 @@ import { ReservationsService } from '../_services';
 
 @Pipe({
     name: 'reservationName',
+    standalone: false
 })
 export class ReservationNamePipe implements PipeTransform {
     constructor(private reservationsService: ReservationsService) {}

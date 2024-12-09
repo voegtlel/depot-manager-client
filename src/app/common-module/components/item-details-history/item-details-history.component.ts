@@ -15,6 +15,7 @@ interface ItemStateWithArray extends ItemState {
     selector: 'depot-item-details-history',
     templateUrl: './item-details-history.component.html',
     styleUrls: ['./item-details-history.component.scss'],
+    standalone: false
 })
 export class ItemDetailsHistoryComponent implements OnChanges {
     @Input() states: ItemStateWithArray[];

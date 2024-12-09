@@ -34,6 +34,7 @@ interface NbCalendarRangeWithStartEnd<D> extends NbCalendarRange<D> {
         </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CalendarRangeDayCellComponent<D> implements NbCalendarCell<D, NbCalendarRangeWithStartEnd<D>> {
     @Input() date: D;
@@ -180,6 +181,7 @@ export class CalendarRangeDayCellComponent<D> implements NbCalendarCell<D, NbCal
             [size]="size"
         ></nb-base-calendar>
     `,
+    standalone: false
 })
 export class CalendarRangeComponent<D> {
     /**
@@ -269,6 +271,7 @@ export class CalendarRangeComponent<D> {
 @Component({
     selector: 'depot-date-range-picker',
     template: '',
+    standalone: false
 })
 export class DateRangePickerComponent<D> extends NbDatepickerComponent<D> {
     @Input() selectingStart: boolean;

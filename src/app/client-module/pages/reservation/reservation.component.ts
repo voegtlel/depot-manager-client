@@ -7,7 +7,7 @@ import {
     UsersService,
 } from '../../../common-module/_services';
 import { BehaviorSubject, Observable, of, Subject, combineLatest } from 'rxjs';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Reservation, ReservationType, User as ApiUser } from '../../../common-module/_models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
@@ -18,6 +18,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
 @Component({
     selector: 'depot-reservation',
     templateUrl: './reservation.component.html',
+    standalone: false
 })
 export class ReservationComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();
@@ -33,19 +34,19 @@ export class ReservationComponent implements OnInit, OnDestroy {
 
     reservationId: string = null;
 
-    readonly form: FormGroup = new FormGroup({
-        name: new FormControl('', Validators.required),
-        type: new FormControl(null, Validators.required),
-        start: new FormControl(null, Validators.required),
-        end: new FormControl(null, Validators.required),
-        userId: new FormControl(null),
-        teamId: new FormControl({ value: null, disabled: true }),
-        contact: new FormControl('', Validators.required),
-        items: new FormControl([]),
+    readonly form: UntypedFormGroup = new UntypedFormGroup({
+        name: new UntypedFormControl('', Validators.required),
+        type: new UntypedFormControl(null, Validators.required),
+        start: new UntypedFormControl(null, Validators.required),
+        end: new UntypedFormControl(null, Validators.required),
+        userId: new UntypedFormControl(null),
+        teamId: new UntypedFormControl({ value: null, disabled: true }),
+        contact: new UntypedFormControl('', Validators.required),
+        items: new UntypedFormControl([]),
     });
-    readonly userName = new FormControl({ value: '', disabled: true });
+    readonly userName = new UntypedFormControl({ value: '', disabled: true });
     userIdRaw$ = new BehaviorSubject<string>(null);
-    readonly code = new FormControl({ value: null, disabled: true });
+    readonly code = new UntypedFormControl({ value: null, disabled: true });
 
     reservationChoices = [
         { value: ReservationType.Private, title: 'Private' },

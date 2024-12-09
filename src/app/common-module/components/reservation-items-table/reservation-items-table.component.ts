@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NbDialogService, NbIconLibraries } from '@nebular/theme';
-import { AsyncInput } from '@ng-reactive/async-input';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import { fromIsoDate } from '../../_helpers';
@@ -49,22 +48,72 @@ function dateDaysDiff(d1: Date, d2: Date): number {
     selector: 'depot-reservation-items-table',
     templateUrl: './reservation-items-table.component.html',
     styleUrls: ['./reservation-items-table.component.scss'],
+    standalone: false
 })
 export class ReservationItemsTableComponent implements OnChanges, OnDestroy, OnInit {
-    @Input() reservationId: string;
-    @Input() items: ItemWithAvailability[];
-    @Input() rangeStart: string | Date;
-    @Input() rangeEnd: string | Date;
-    @Input() selectedItems$: Observable<ReservationItem[]>;
     @Input() selectedLookup: Record<string, any>;
-    @Input() showItemHistory = false;
 
-    @AsyncInput() reservationId$ = new BehaviorSubject<string>(null);
-    @AsyncInput() items$ = new BehaviorSubject<ItemWithAvailability[]>(null);
-    @AsyncInput() rangeStart$ = new BehaviorSubject<string | Date>(null);
-    @AsyncInput() rangeEnd$ = new BehaviorSubject<string | Date>(null);
-    @AsyncInput() selectedItems$$ = new BehaviorSubject<Observable<ReservationItem[]>>(null);
-    @AsyncInput() showItemHistory$ = new BehaviorSubject<boolean>(null);
+    private readonly reservationId$ = new BehaviorSubject<string>(null);
+    private readonly items$ = new BehaviorSubject<ItemWithAvailability[]>(null);
+    private readonly rangeStart$ = new BehaviorSubject<string | Date>(null);
+    private readonly rangeEnd$ = new BehaviorSubject<string | Date>(null);
+    private readonly selectedItems$$ = new BehaviorSubject<Observable<ReservationItem[]>>(null);
+    private readonly showItemHistory$ = new BehaviorSubject<boolean>(null);
+
+
+    @Input()
+    public set items(items: ItemWithAvailability[]) {
+        this.items$.next(items);
+    }
+
+    public get items(): ItemWithAvailability[] {
+        return this.items$.value;
+    }
+
+    @Input()
+    public set reservationId(reservationId: string) {
+        this.reservationId$.next(reservationId);
+    }
+
+    public get reservationId(): string {
+        return this.reservationId$.value;
+    }
+
+    @Input()
+    public set rangeStart(rangeStart: string | Date) {
+        this.rangeStart$.next(rangeStart);
+    }
+
+    public get rangeStart(): string | Date {
+        return this.rangeStart$.value;
+    }
+
+    @Input()
+    public set rangeEnd(rangeEnd: string | Date) {
+        this.rangeEnd$.next(rangeEnd);
+    }
+
+    public get rangeEnd(): string | Date {
+        return this.rangeEnd$.value;
+    }
+
+    @Input()
+    public set selectedItems$(selectedItems$: Observable<ReservationItem[]>) {
+        this.selectedItems$$.next(selectedItems$);
+    }
+
+    public get selectedItems$(): Observable<ReservationItem[]> {
+        return this.selectedItems$$.value;
+    }
+
+    @Input()
+    public set showItemHistory(showItemHistory: boolean) {
+        this.showItemHistory$.next(showItemHistory);
+    }
+
+    public get showItemHistory(): boolean {
+        return this.showItemHistory$.value;
+    }
 
     @Output() selectItem = new EventEmitter<string>();
     @Output() deselectItem = new EventEmitter<string>();
@@ -369,7 +418,14 @@ export class ReservationItemsTableComponent implements OnChanges, OnDestroy, OnI
         this.dangerIconClasses += ' status-danger';
     }
 
-    ngOnDestroy(): void {}
+    ngOnDestroy(): void {
+        this.reservationId$.complete();
+        this.items$.complete();
+        this.rangeStart$.complete();
+        this.rangeEnd$.complete();
+        this.selectedItems$$.complete();
+        this.showItemHistory$.complete();
+    }
 
     ngOnChanges(): void {}
 

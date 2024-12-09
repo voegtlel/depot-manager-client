@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnDestroy, OnChanges, TemplateRef } from '@angular/core';
-import { AsyncInput } from '@ng-reactive/async-input';
 import { Item, Reservation } from '../../_models';
 import { ItemsService } from '../../_services';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
@@ -10,11 +9,19 @@ import { NbDialogService } from '@nebular/theme';
     selector: 'depot-reservation-details',
     templateUrl: './reservation-details.component.html',
     styleUrls: ['./reservation-details.component.scss'],
+    standalone: false
 })
 export class ReservationDetailsComponent implements OnInit, OnDestroy, OnChanges {
-    @Input() reservation: Reservation;
+    private readonly reservation$ = new BehaviorSubject<Reservation>(null);
 
-    @AsyncInput() reservation$ = new BehaviorSubject<Reservation>(null);
+    @Input()
+    public set reservation(reservation: Reservation) {
+        this.reservation$.next(reservation);
+    }
+
+    public get reservation(): Reservation {
+        return this.reservation$.value;
+    }
 
     destroyed$ = new Subject<void>();
     reservedItems$: Observable<Item[]>;
@@ -32,6 +39,7 @@ export class ReservationDetailsComponent implements OnInit, OnDestroy, OnChanges
     ngOnInit() {}
 
     ngOnDestroy(): void {
+        this.reservation$.complete();
         this.destroyed$.next();
     }
 

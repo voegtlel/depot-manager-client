@@ -2,7 +2,7 @@
 @import 'themes';
 
 // framework component styles
-@import '~@nebular/theme/styles/globals';
+@import '../node_modules/@nebular/theme/styles/globals';
 
 // install the framework styles
 @include nb-install() {

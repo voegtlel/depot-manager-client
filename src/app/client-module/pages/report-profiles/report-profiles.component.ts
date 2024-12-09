@@ -30,6 +30,7 @@ interface ReportProfileEntry {
     templateUrl: './report-profiles.component.html',
     styleUrls: ['./report-profiles.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ReportProfilesComponent implements OnInit, OnDestroy {
     loading: boolean;

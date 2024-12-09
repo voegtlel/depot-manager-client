@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     templateUrl: './authentication.component.html',
     styleUrls: ['./authentication.component.scss'],
+    standalone: false
 })
 export class AuthenticationComponent {
     @Input() returnUrl: string;

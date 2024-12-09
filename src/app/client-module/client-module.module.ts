@@ -14,7 +14,7 @@ import { BaysComponent } from './pages/bays/bays.component';
 import { BayComponent } from './pages/bay/bay.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import {
     NbAccordionModule,
@@ -79,10 +79,8 @@ import { ItemsTableComponent } from './pages/items-table/items-table.component';
         PagesComponent,
         ReservationComponent,
         ReservationReturnComponent,
-
         AuthenticationComponent,
         LogoutComponent,
-
         ReservationsComponent,
         NotFoundComponent,
         ItemsComponent,
@@ -95,8 +93,7 @@ import { ItemsTableComponent } from './pages/items-table/items-table.component';
         ReportProfileComponent,
         ReportProfilesComponent,
     ],
-    imports: [
-        CommonModule,
+    exports: [PagesComponent], imports: [CommonModule,
         CommonModuleModule,
         RouterModule,
         NbMenuModule.forRoot(),
@@ -139,16 +136,14 @@ import { ItemsTableComponent } from './pages/items-table/items-table.component';
         DragDropModule,
         ClipboardModule,
         FormsModule,
-        HttpClientModule,
-        MarkdownModule.forRoot(),
-    ],
-    exports: [PagesComponent],
-    providers: [
+        MarkdownModule.forRoot()], providers: [
         NbSidebarService,
         { provide: APP_BASE_HREF, useValue: environment.appBaseHref },
         { provide: OAuthStorage, useValue: localStorage },
         AuthGuard,
         { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
-    ],
+        provideHttpClient(withInterceptorsFromDi()),
+    ]
 })
-export class ClientModuleModule {}
+export class ClientModuleModule {
+}

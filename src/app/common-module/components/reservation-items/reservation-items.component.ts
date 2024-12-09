@@ -7,7 +7,6 @@ import { NbDialogService, NbToastrService } from '@nebular/theme';
 import { map, shareReplay, switchMap, takeUntil, tap, skip, debounceTime, delay, catchError } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { Filterable } from '../../_pipes';
-import { AsyncInput } from '@ng-reactive/async-input';
 
 interface ItemWithAvailability extends Item, Filterable {
     available: boolean;
@@ -18,8 +17,13 @@ interface ItemWithAvailability extends Item, Filterable {
     templateUrl: './reservation-items.component.html',
     providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ReservationItemsComponent), multi: true }],
     styleUrls: ['./reservation-items.component.scss'],
+    standalone: false
 })
 export class ReservationItemsComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
+    private readonly reservationsEnd$ = new BehaviorSubject<string>(null);
+    private readonly reservationsStart$ = new BehaviorSubject<string>(null);
+    private readonly skipReservationId$ = new BehaviorSubject<string>(null);
+
     private destroyed$ = new Subject<void>();
 
     loading = true;
@@ -36,13 +40,32 @@ export class ReservationItemsComponent implements OnInit, OnDestroy, OnChanges, 
 
     imageLoading: boolean;
 
-    @Input() reservationsStart: string;
-    @Input() reservationsEnd: string;
-    @Input() skipReservationId: string;
+    @Input()
+    public set skipReservationId(skipReservationId: string) {
+        this.skipReservationId$.next(skipReservationId);
+    }
 
-    @AsyncInput() reservationsStart$ = new BehaviorSubject<string>(null);
-    @AsyncInput() reservationsEnd$ = new BehaviorSubject<string>(null);
-    @AsyncInput() skipReservationId$ = new BehaviorSubject<string>(null);
+    public get skipReservationId(): string {
+        return this.skipReservationId$.value;
+    }
+
+    @Input()
+    public set reservationsEnd(reservationsEnd: string) {
+        this.reservationsEnd$.next(reservationsEnd);
+    }
+
+    public get reservationsEnd(): string {
+        return this.reservationsEnd$.value;
+    }
+
+    @Input()
+    public set reservationsStart(reservationsStart: string) {
+        this.reservationsStart$.next(reservationsStart);
+    }
+
+    public get reservationsStart(): string {
+        return this.reservationsStart$.value;
+    }
 
     group = true;
     onlySelected = false;
@@ -206,6 +229,9 @@ export class ReservationItemsComponent implements OnInit, OnDestroy, OnChanges, 
     }
 
     ngOnDestroy(): void {
+        this.reservationsEnd$.complete();
+        this.reservationsStart$.complete();
+        this.skipReservationId$.complete();
         this.destroyed$.next();
     }
 

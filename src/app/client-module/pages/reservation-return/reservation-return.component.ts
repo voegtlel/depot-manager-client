@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService, AuthService, UpdateService, UsersService } from '../../../common-module/_services';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Reservation } from '../../../common-module/_models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
@@ -11,6 +11,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
 @Component({
     selector: 'depot-reservation-return',
     templateUrl: './reservation-return.component.html',
+    standalone: false
 })
 export class ReservationReturnComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();
@@ -22,8 +23,8 @@ export class ReservationReturnComponent implements OnInit, OnDestroy {
 
     reservationId: string = null;
 
-    readonly returnItemsForm = new FormArray([]);
-    readonly form = new FormGroup({
+    readonly returnItemsForm = new UntypedFormArray([]);
+    readonly form = new UntypedFormGroup({
         items: this.returnItemsForm,
     });
     reservation$: Observable<Reservation>;
@@ -52,10 +53,10 @@ export class ReservationReturnComponent implements OnInit, OnDestroy {
             this.returnItemsForm.clear();
             for (const itemId of reservation.items) {
                 this.returnItemsForm.push(
-                    new FormGroup({
-                        itemId: new FormControl(itemId),
-                        problem: new FormControl(null, Validators.required),
-                        comment: new FormControl(null),
+                    new UntypedFormGroup({
+                        itemId: new UntypedFormControl(itemId),
+                        problem: new UntypedFormControl(null, Validators.required),
+                        comment: new UntypedFormControl(null),
                     })
                 );
             }

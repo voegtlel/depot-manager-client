@@ -32,6 +32,7 @@ interface ItemEntry {
     templateUrl: './items.component.html',
     styleUrls: ['./items.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ItemsComponent implements OnInit, OnDestroy {
     loading = true;
@@ -41,16 +42,15 @@ export class ItemsComponent implements OnInit, OnDestroy {
 
     allColumns = [
         'externalId',
+        'tags',
+        'picture',
         'name',
         'description',
         'conditionText',
         'purchaseDate',
         'lastService',
         'bay',
-        'picture',
-        'tags',
-        'action',
-        'action-details',
+        'actions',
     ];
 
     dataSource: NbTreeGridDataSource<ItemEntry> = null;

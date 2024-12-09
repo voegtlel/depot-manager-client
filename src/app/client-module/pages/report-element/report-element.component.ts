@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService, AuthService, ReportService } from '../../../common-module/_services';
 import { BehaviorSubject, Observable, of, Subject, combineLatest } from 'rxjs';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ReportElement } from '../../../common-module/_models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
@@ -12,6 +12,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
     selector: 'depot-report-element',
     templateUrl: './report-element.component.html',
     styleUrls: ['./report-element.component.scss'],
+    standalone: false
 })
 export class ReportElementComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();
@@ -25,9 +26,9 @@ export class ReportElementComponent implements OnInit, OnDestroy {
 
     reportElementId: string = null;
 
-    readonly form: FormGroup = new FormGroup({
-        title: new FormControl('', Validators.required),
-        description: new FormControl('', Validators.required),
+    readonly form: UntypedFormGroup = new UntypedFormGroup({
+        title: new UntypedFormControl('', Validators.required),
+        description: new UntypedFormControl('', Validators.required),
     });
 
     constructor(

@@ -6,6 +6,7 @@ import { ReportElement } from '../_models';
 
 @Pipe({
     name: 'reportElement',
+    standalone: false
 })
 export class ReportElementPipe implements PipeTransform {
     constructor(private reportService: ReportService) {}

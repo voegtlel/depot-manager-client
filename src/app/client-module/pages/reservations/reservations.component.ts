@@ -9,6 +9,7 @@ import { map, shareReplay, switchMap, takeUntil, tap } from 'rxjs/operators';
     selector: 'depot-reservations',
     templateUrl: './reservations.component.html',
     styleUrls: ['./reservations.component.scss'],
+    standalone: false
 })
 export class ReservationsComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();

@@ -5,6 +5,7 @@ import { ItemsService } from '../_services';
 
 @Pipe({
     name: 'itemName',
+    standalone: false
 })
 export class ItemNamePipe implements PipeTransform {
     constructor(private itemsService: ItemsService) {}

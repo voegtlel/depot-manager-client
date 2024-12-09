@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -113,8 +113,33 @@ import { ItemDetailsHistoryComponent } from './components/item-details-history/i
         UserNamePipe,
         ItemNamePipe,
     ],
-    imports: [
-        CommonModule,
+    exports: [
+        FormElementComponent,
+        ReservationItemsComponent,
+        ReservationItemsTableComponent,
+        ReservationListItemComponent,
+        ReservationDetailsComponent,
+        ItemBaysComponent,
+        CalendarRangeDayCellComponent,
+        CalendarRangeComponent,
+        DateRangePickerComponent,
+        ReportElementListComponent,
+        ConfirmDialogComponent,
+        ItemFilterPipe,
+        ItemGroupFilterPipe,
+        BayNamePipe,
+        FormatDatePipe,
+        FormatDateTimePipe,
+        BayListComponent,
+        PictureListComponent,
+        ItemDetailsComponent,
+        ItemGroupListComponent,
+        ItemGroupNamePipe,
+        ReportElementPipe,
+        ReportProfilePipe,
+        ReservationNamePipe,
+        ItemNamePipe,
+    ], imports: [CommonModule,
         BrowserAnimationsModule,
         NbThemeModule.forRoot(),
         NbMenuModule.forRoot(),
@@ -155,41 +180,13 @@ import { ItemDetailsHistoryComponent } from './components/item-details-history/i
         NgxFileDropModule,
         ReactiveFormsModule,
         FormsModule,
-        HttpClientModule,
         MarkdownModule.forRoot(),
         OAuthModule.forRoot({
             resourceServer: {
                 customUrlValidation: (url) => url.startsWith(getApiUrl()),
                 sendAccessToken: true,
             },
-        }),
-    ],
-    exports: [
-        FormElementComponent,
-        ReservationItemsComponent,
-        ReservationItemsTableComponent,
-        ReservationListItemComponent,
-        ReservationDetailsComponent,
-        ItemBaysComponent,
-        CalendarRangeDayCellComponent,
-        CalendarRangeComponent,
-        DateRangePickerComponent,
-        ReportElementListComponent,
-        ConfirmDialogComponent,
-        ItemFilterPipe,
-        ItemGroupFilterPipe,
-        BayNamePipe,
-        FormatDatePipe,
-        FormatDateTimePipe,
-        BayListComponent,
-        PictureListComponent,
-        ItemDetailsComponent,
-        ItemGroupListComponent,
-        ItemGroupNamePipe,
-        ReportElementPipe,
-        ReportProfilePipe,
-        ReservationNamePipe,
-        ItemNamePipe,
-    ]
+        })], providers: [provideHttpClient(withInterceptorsFromDi())]
 })
-export class CommonModuleModule {}
+export class CommonModuleModule {
+}

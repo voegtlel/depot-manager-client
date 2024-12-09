@@ -8,6 +8,7 @@ import { ReportService } from '../../_services';
     selector: 'depot-report-profile-list',
     templateUrl: './report-profile-list.component.html',
     styleUrls: ['./report-profile-list.component.scss'],
+    standalone: false
 })
 export class ReportProfileListComponent implements OnInit, OnDestroy {
     @Input() selectedReportProfile: string;

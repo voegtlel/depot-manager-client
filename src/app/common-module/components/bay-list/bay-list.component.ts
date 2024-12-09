@@ -8,6 +8,7 @@ import { ItemsService } from '../../_services';
     selector: 'depot-bay-list',
     templateUrl: './bay-list.component.html',
     styleUrls: ['./bay-list.component.scss'],
+    standalone: false
 })
 export class BayListComponent implements OnInit, OnDestroy {
     @Input() selectedBay: string;

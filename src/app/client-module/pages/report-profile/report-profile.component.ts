@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ApiService, AuthService, ReportService } from '../../../common-module/_services';
 import { BehaviorSubject, Observable, of, Subject, combineLatest } from 'rxjs';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ReportProfile } from '../../../common-module/_models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbDialogService, NbToastrService } from '@nebular/theme';
@@ -13,6 +13,7 @@ import { parseHttpError } from 'src/app/common-module/_helpers';
     selector: 'depot-report-profile',
     templateUrl: './report-profile.component.html',
     styleUrls: ['./report-profile.component.scss'],
+    standalone: false
 })
 export class ReportProfileComponent implements OnInit, OnDestroy {
     private destroyed$ = new Subject<void>();
@@ -26,10 +27,10 @@ export class ReportProfileComponent implements OnInit, OnDestroy {
 
     reportProfileId: string = null;
 
-    readonly elementsForm: FormArray = new FormArray([]);
-    readonly form: FormGroup = new FormGroup({
-        name: new FormControl('', Validators.required),
-        description: new FormControl('', Validators.required),
+    readonly elementsForm: UntypedFormArray = new UntypedFormArray([]);
+    readonly form: UntypedFormGroup = new UntypedFormGroup({
+        name: new UntypedFormControl('', Validators.required),
+        description: new UntypedFormControl('', Validators.required),
         elements: this.elementsForm,
     });
 
@@ -65,11 +66,11 @@ export class ReportProfileComponent implements OnInit, OnDestroy {
                 if (reportProfile !== null) {
                     this.reportProfileId = reportProfile.id;
                     this.isNew = false;
-                    while (this.elementsForm.controls.length > reportProfile.elements?.length ?? 0) {
+                    while (this.elementsForm.controls.length > (reportProfile.elements?.length ?? 0)) {
                         this.elementsForm.removeAt(0);
                     }
-                    while (this.elementsForm.controls.length < reportProfile.elements?.length ?? 0) {
-                        this.elementsForm.push(new FormControl('', Validators.required));
+                    while (this.elementsForm.controls.length < (reportProfile.elements?.length ?? 0)) {
+                        this.elementsForm.push(new UntypedFormControl('', Validators.required));
                     }
                     this.form.reset(reportProfile);
                 } else {
@@ -133,7 +134,7 @@ export class ReportProfileComponent implements OnInit, OnDestroy {
     }
 
     addReportElement(value?: string) {
-        this.elementsForm.push(new FormControl(value, Validators.required));
+        this.elementsForm.push(new UntypedFormControl(value, Validators.required));
     }
 
     openReportElementDialog($event: MouseEvent, context?: any) {
@@ -148,7 +149,7 @@ export class ReportProfileComponent implements OnInit, OnDestroy {
         });
     }
 
-    removeElement(elementForm: FormGroup) {
+    removeElement(elementForm: UntypedFormGroup) {
         this.elementsForm.controls.splice(this.elementsForm.controls.indexOf(elementForm), 1);
     }
 
