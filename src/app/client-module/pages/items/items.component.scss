@@ -1,3 +1,6 @@
+@use '../mixins';
+@include mixins.tight-layout;
+
 .expandable,
 .expandable *,
 .sortable,
@@ -6,8 +9,8 @@
 }
 
 .header-flex {
-    display: flex;
     place-content: space-between;
+    display: flex;
     flex-flow: wrap;
 }
 
@@ -18,17 +21,11 @@ td > .table-fill {
 }
 
 td.expandable {
-    font-size: 120%;
-    font-weight: bold;
-    background-color: lightsteelblue;
+    background-color: var(--tertiary-95);
 }
 
 table {
     // This will ensure every column is properly visible, also on mobile
     min-width: 1200px;
     max-width: none;
-}
-
-img {
-    max-width: 5vw;
 }

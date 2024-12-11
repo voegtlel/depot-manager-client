@@ -1,11 +1,7 @@
 <nb-card [nbSpinner]="loading">
     <nb-card-header class="header-flex">
-        <span>Items</span>
         <div class="filter">
-            <label class="label" [for]="filterInput">
-                <nb-icon icon="funnel"></nb-icon>
-                Filter:
-            </label>
+            <label class="label" [for]="filterInput"><nb-icon icon="funnel"/></label>
             <input
                 nbInput
                 [nbFilterInput]="dataSource"
@@ -131,13 +127,6 @@
                 </td>
             </ng-container>
 
-            <ng-container nbTreeGridColumnDef="bay">
-                <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Bay</th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row">
-                    {{ row.data.bayId | bayName | async }}
-                </td>
-            </ng-container>
-
             <ng-container nbTreeGridColumnDef="picture">
                 <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Picture</th>
                 <td nbTreeGridCell *nbTreeGridCellDef="let row">
@@ -159,7 +148,7 @@
                         <nb-icon icon="edit"></nb-icon>
                     </button>
                     <button nbButton ghost (click)="openDialog($event, itemDialog, row.data)">
-                        <nb-icon icon="search-outline"></nb-icon>
+                        <nb-icon icon="info-outline"></nb-icon>
                     </button>
                 </td>
             </ng-container>

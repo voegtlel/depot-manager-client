@@ -10,8 +10,6 @@ import { ReservationsComponent } from './pages/reservations/reservations.compone
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { ItemComponent } from './pages/item/item.component';
-import { BaysComponent } from './pages/bays/bays.component';
-import { BayComponent } from './pages/bay/bay.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -61,7 +59,6 @@ import { APP_BASE_HREF } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { CommonModuleModule } from '../common-module/common-module.module';
-import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { OAuthStorage } from 'angular-oauth2-oidc';
 import { AuthGuard } from './auth.guard';
@@ -79,13 +76,10 @@ import { ItemsTableComponent } from './pages/items-table/items-table.component';
         PagesComponent,
         ReservationComponent,
         ReservationReturnComponent,
-        AuthenticationComponent,
         LogoutComponent,
         ReservationsComponent,
         NotFoundComponent,
         ItemsComponent,
-        BaysComponent,
-        BayComponent,
         ItemComponent,
         ItemsTableComponent,
         ReportElementsComponent,
@@ -93,7 +87,9 @@ import { ItemsTableComponent } from './pages/items-table/items-table.component';
         ReportProfileComponent,
         ReportProfilesComponent,
     ],
-    exports: [PagesComponent], imports: [CommonModule,
+    exports: [PagesComponent],
+    imports: [
+        CommonModule,
         CommonModuleModule,
         RouterModule,
         NbMenuModule.forRoot(),
